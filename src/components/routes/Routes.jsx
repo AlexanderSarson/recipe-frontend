@@ -7,6 +7,8 @@ import Jokes from '../jokes/';
 import Home from '../home/';
 import ProtectedRoute from './ProtectedRoute.jsx';
 import Unauthorized from '../unauthorized/';
+import SearchPage from '../search';
+import ProvideSearch from '../../hooks/useSearch.jsx';
 
 const Routes = () => {
   return (
@@ -25,6 +27,12 @@ const Routes = () => {
 
       <Route path='/content3'>
         <Content3 />
+      </Route>
+
+      <Route path='/search'>
+        <ProvideSearch>
+          <SearchPage />
+        </ProvideSearch>
       </Route>
 
       <Route path='/unauthorized'>

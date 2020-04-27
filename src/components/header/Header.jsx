@@ -59,6 +59,10 @@ export default function Header() {
           Content 3
         </Menu.Item>
 
+        <Menu.Item as={NavLink} exact to='/search' name='search'>
+          Search
+        </Menu.Item>
+
         {handleLoginLogOut()}
       </Container>
     </Menu>
