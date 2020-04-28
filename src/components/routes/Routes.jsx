@@ -9,6 +9,7 @@ import ProtectedRoute from './ProtectedRoute.jsx';
 import Unauthorized from '../unauthorized/';
 import SearchPage from '../search';
 import ProvideSearch from '../../hooks/useSearch.jsx';
+import RecipeDetails from '../recipeDetails/RecipeDetails.jsx';
 
 const Routes = () => {
   return (
@@ -25,17 +26,21 @@ const Routes = () => {
         <Scrape />
       </ProtectedRoute>
 
-      <Route path='/content3'>
+      <Route exact path='/content3'>
         <Content3 />
       </Route>
 
-      <Route path='/search'>
+      <Route exact path='/search'>
         <ProvideSearch>
           <SearchPage />
         </ProvideSearch>
       </Route>
 
-      <Route path='/unauthorized'>
+      <Route path={`/details/:recipeId`}>
+        <RecipeDetails />
+      </Route>
+
+      <Route exact path='/unauthorized'>
         <Unauthorized />
       </Route>
 

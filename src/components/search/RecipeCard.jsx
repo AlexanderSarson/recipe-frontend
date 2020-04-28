@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const RecipeCard = ({ recipe }) => {
   return (
-    <Card>
+    <Card as={Link} to={`/details/${recipe.id}`}>
       <Image
         src='https://dizzybusyandhungry.com/wp-content/uploads/2019/06/ground-turkey-pasta-broccoli-dinner-close-up.jpg'
         wrapped

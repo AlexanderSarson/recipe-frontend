@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { RecipeCard } from '../search';
-import { Dimmer, Loader, Card, Segment, Rail, Input } from 'semantic-ui-react';
+import { Card, Segment, Rail, Input } from 'semantic-ui-react';
 import { useSearch } from '../../hooks/useSearch.jsx';
+import PlaceholderGrid from '../utils/placeholders/PlaceholderGrid.jsx';
 
 const SearchPage = () => {
   const { isLoading, query, setQuery, searchResult } = useSearch();
@@ -15,16 +16,16 @@ const SearchPage = () => {
 
   if (isLoading) {
     return (
-      <Dimmer active inverted>
-        <Loader inverted>Loading</Loader>
-      </Dimmer>
+      <Segment style={{ height: '120vh' }}>
+        <PlaceholderGrid />
+      </Segment>
     );
   }
 
   return (
-    <Segment raised textAlign='center' style={{ height: '100vh' }}>
+    <Segment raised>
       {searchResult && (
-        <Card.Group>
+        <Card.Group itemsPerRow={4}>
           {searchResult.map((r) => (
             <RecipeCard key={r.id} recipe={r} />
           ))}

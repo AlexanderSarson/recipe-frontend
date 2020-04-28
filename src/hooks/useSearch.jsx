@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState, useContext } from 'react';
 import { apiUtils } from '../utils/apiUtils';
+import * as response from '../utils/response.json';
 
 const searchContext = createContext();
 
@@ -17,21 +18,26 @@ const useProvideSearch = () => {
   }, [query]);
 
   const search = async (query) => {
-    const options = apiUtils.makeOptions('GET');
-    try {
-      setIsLoading(true);
-      const res = await apiUtils.fetchData('/recipe/search', options);
-      setSearchResult(res.results);
-      console.log(query);
-    } catch (error) {
-      if (error.status) {
-        error.fullError.then((e) => alert(e.message));
-      } else {
-        console.log('Network error');
-      }
-    } finally {
+    // const options = apiUtils.makeOptions('GET');
+    setIsLoading(true);
+    setInterval(() => {
+      setSearchResult(response.results);
       setIsLoading(false);
-    }
+    }, 5000);
+    // try {
+    //   setIsLoading(true);
+    //   const res = await apiUtils.fetchData('/recipe/search', options);
+    //   setSearchResult(res.results);
+    //   console.log(query);
+    // } catch (error) {
+    //   if (error.status) {
+    //     error.fullError.then((e) => alert(e.message));
+    //   } else {
+    //     console.log('Network error');
+    //   }
+    // } finally {
+    //   setIsLoading(false);
+    // }
   };
 
   return {
