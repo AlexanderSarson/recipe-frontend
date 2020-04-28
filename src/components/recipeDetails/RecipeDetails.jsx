@@ -1,10 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Segment, Image, Grid, Header, Divider } from 'semantic-ui-react';
+import { Segment, Image, Grid } from 'semantic-ui-react';
 import IngredientTable from './IngredientsTable.jsx';
 import * as recipe from '../../utils/dummyRecipeFull.json';
 import Instructions from './Instructions.jsx';
-import IconHandler from './IconHandler.jsx';
+import DescriptionBox from './DescriptionBox.jsx';
 
 const RecipeDetails = () => {
   const { recipeId } = useParams();
@@ -19,20 +19,7 @@ const RecipeDetails = () => {
             <Image src={recipe.image} size='large' centered rounded />
           </Column>
           <Column width={8}>
-            <Segment padded>
-              <Header horizontal section>
-                {recipe.title}
-              </Header>
-              <Divider hidden />
-              <IconHandler recipe={recipe} />
-              <Divider hidden />
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-              consequatur sint maxime aut inventore, alias accusamus fuga
-              itaque? Sed corrupti ad pariatur recusandae dolor quisquam libero
-              quam rem mollitia, obcaecati ratione ducimus deserunt fugiat
-              perspiciatis dolores quis quo consequatur quae repellat vel
-              voluptas eum harum laudantium impedit. Labore, dolor ratione.
-            </Segment>
+            <DescriptionBox recipe={recipe} />
           </Column>
         </Row>
 
