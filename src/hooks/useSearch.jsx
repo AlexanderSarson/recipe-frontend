@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState, useContext } from 'react';
 import { apiUtils } from '../utils/apiUtils';
-import * as response from '../utils/response.json';
 
 const searchContext = createContext();
 
@@ -9,7 +8,7 @@ export const useSearch = () => {
 };
 
 const useProvideSearch = () => {
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState('*');
   const [isLoading, setIsLoading] = useState(false);
   const [searchResult, setSearchResult] = useState(null);
 
@@ -18,26 +17,22 @@ const useProvideSearch = () => {
   }, [query]);
 
   const search = async (query) => {
-    // const options = apiUtils.makeOptions('GET');
-    setIsLoading(true);
-    setInterval(() => {
-      setSearchResult(response.results);
+    const options = apiUtils.makeOptions('POST', { name: query, number: 10 });
+    try {
+      setIsLoading(true);
+      const res = await apiUtils.fetchData('/recipe/search', options);
+      setSearchResult(res.results);
+    } catch (error) {
+      if (error.status) {
+        error.fullError.then((e) => alert(e.message));
+      } else {
+        alert(
+          'Oh owh! You broke the internet. Please contact the dev team to fix it..'
+        );
+      }
+    } finally {
       setIsLoading(false);
-    }, 5000);
-    // try {
-    //   setIsLoading(true);
-    //   const res = await apiUtils.fetchData('/recipe/search', options);
-    //   setSearchResult(res.results);
-    //   console.log(query);
-    // } catch (error) {
-    //   if (error.status) {
-    //     error.fullError.then((e) => alert(e.message));
-    //   } else {
-    //     console.log('Network error');
-    //   }
-    // } finally {
-    //   setIsLoading(false);
-    // }
+    }
   };
 
   return {

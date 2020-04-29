@@ -11,12 +11,7 @@ const DescriptionBox = ({ recipe }) => {
       <Divider hidden />
       <IconHandler recipe={recipe} />
       <Divider hidden />
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consequatur
-      sint maxime aut inventore, alias accusamus fuga itaque? Sed corrupti ad
-      pariatur recusandae dolor quisquam libero quam rem mollitia, obcaecati
-      ratione ducimus deserunt fugiat perspiciatis dolores quis quo consequatur
-      quae repellat vel voluptas eum harum laudantium impedit. Labore, dolor
-      ratione.
+      <div dangerouslySetInnerHTML={{ __html: recipe.default.summary }} />
     </Segment>
   );
 };

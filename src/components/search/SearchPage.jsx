@@ -6,7 +6,6 @@ import PlaceholderGrid from '../utils/placeholders/PlaceholderGrid.jsx';
 
 const SearchPage = () => {
   const { isLoading, query, setQuery, searchResult } = useSearch();
-
   const [inputQuery, setInputQuery] = useState(query);
 
   const handleSubmit = (e) => {
@@ -35,10 +34,12 @@ const SearchPage = () => {
       <Rail close='very' position='left'>
         <Segment>
           <Input
+            id={'searchField'}
             value={inputQuery}
             fluid
             onChange={(e) => setInputQuery(e.target.value)}
             action={{
+              id: 'searchBtn',
               icon: 'search',
               onClick: (e) => handleSubmit(e)
             }}
