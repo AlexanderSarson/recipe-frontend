@@ -11,22 +11,27 @@ import {
 import { useAuth } from '../../hooks/useAuth.jsx';
 import { useHistory } from 'react-router-dom';
 import { apiUtils } from '../../utils/apiUtils';
+import { backendUrl } from '../../config/settings';
 
-export default function SignUp({ hideModal }) {
+export default function SignUp() {
   const { signIn, isLoading } = useAuth();
   const init = { username: '', password: '', password2: '' };
   const signUpCredentials = useRef(init);
   const [isSamePassword, setIsSamePassword] = useState(false);
   let history = useHistory();
 
-  const handleLogin = (evt) => {
+  const handleSignUp = async (evt) => {
     evt.preventDefault();
     const opt = apiUtils.makeOptions('POST', { username: signUpCredentials.current.username, password: signUpCredentials.current.password });
-    apiUtils.fetchData('/login/create', opt)
-      .then(() => {
-        signIn(signUpCredentials.current.username, signUpCredentials.current.password);
-        history.push('/');
-      });
+    const res = await fetch(`${backendUrl}/login/create`, opt);
+    const json = await res.json();
+    if (json.status === 200) {
+      signIn(signUpCredentials.current.username, signUpCredentials.current.password);
+      history.push('/');
+    } else {
+      alert(json.message);
+    }
+
   };
 
   const onChange = (evt) => {
@@ -94,7 +99,7 @@ export default function SignUp({ hideModal }) {
             />
             <Button
               loading={isLoading}
-              onClick={handleLogin}
+              onClick={handleSignUp}
               color='blue'
               fluid
               size='large'
