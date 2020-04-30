@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Segment, Image, Grid, Dimmer, Loader } from 'semantic-ui-react';
-import IngredientTable from '../jokes/IngredientsTable.jsx';
+import IngredientTable from './IngredientsTable.jsx';
 import Instructions from './Instructions.jsx';
 import DescriptionBox from './DescriptionBox.jsx';
 import { apiUtils } from '../../utils/apiUtils.js';

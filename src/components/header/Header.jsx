@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { Menu, Container, Button } from 'semantic-ui-react';
 import { useAuth } from '../../hooks/useAuth.jsx';
 import LoginModal from '../login/LoginModal.jsx';
+import SignUp from '../login/SignUp.jsx';
 
 export default function Header() {
   const {
@@ -22,20 +23,20 @@ export default function Header() {
         <LoginModal />
       </Menu.Item>
     ) : (
-      <>
-        <Menu.Item position='right'>
-          <Button
-            as={Link}
-            to='/signup'
-            primary
-            style={{ marginRight: '0.5em' }}
-          >
-            Sign Up
+        <>
+          <Menu.Item position='right'>
+            <Button
+              as={Link}
+              to='/signUp'
+              primary
+              style={{ marginRight: '0.5em' }}
+            >
+              Sign Up
           </Button>
-          <LoginModal />
-        </Menu.Item>
-      </>
-    );
+            <LoginModal />
+          </Menu.Item>
+        </>
+      );
   };
 
   return (
@@ -45,25 +46,25 @@ export default function Header() {
           Home
         </Menu.Item>
 
-        <Menu.Item as={NavLink} exact to='/jokes' name='jokes'>
+        <Menu.Item as={NavLink} to='/jokes' name='jokes'>
           Jokes
         </Menu.Item>
 
         {authenticateRole('admin') && (
-          <Menu.Item as={NavLink} exact to='/scrape' name='scrape'>
+          <Menu.Item as={NavLink} to='/scrape' name='scrape'>
             Scrape
           </Menu.Item>
         )}
 
-        <Menu.Item as={NavLink} exact to='/content3' name='jokes'>
+        <Menu.Item as={NavLink} to='/content3' name='jokes'>
           Content 3
         </Menu.Item>
 
-        <Menu.Item as={NavLink} exact to='/search' name='search'>
+        <Menu.Item as={NavLink} to='/search' name='search'>
           Search
         </Menu.Item>
 
-        <Menu.Item as={NavLink} exact to='/randomRecipe' name='randomRecipe'>
+        <Menu.Item as={NavLink} to='/randomRecipe' name='randomRecipe'>
           Random Recipe
         </Menu.Item>
 
