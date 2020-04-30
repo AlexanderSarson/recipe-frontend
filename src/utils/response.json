@@ -1,0 +1,74 @@
+{
+  "results": [
+    {
+      "id": 611906,
+      "image": "https://spoonacular.com/recipeImages/611906-312x231.png",
+      "readyInMinutes": 45,
+      "servings": 6,
+      "title": "The *Best* Instant Pancake Mix"
+    },
+    {
+      "id": 719941,
+      "image": "https://spoonacular.com/recipeImages/719941-312x231.jpg",
+      "readyInMinutes": 20,
+      "servings": 5,
+      "title": "Cauliflower Fritters * Tortitas de Coliflor"
+    },
+    {
+      "id": 702630,
+      "image": "https://spoonacular.com/recipeImages/702630-312x231.jpg",
+      "readyInMinutes": 50,
+      "servings": 6,
+      "title": "Tomato-Basil Chicken and Pasta **Low Fat/ Cal/ High Protein"
+    },
+    {
+      "id": 93596,
+      "image": "https://spoonacular.com/recipeImages/93596-312x231.jpg",
+      "readyInMinutes": 20,
+      "servings": 4,
+      "title": "Crunchy Noodle Salad *award Winning*"
+    },
+    {
+      "id": 101921,
+      "image": "https://spoonacular.com/recipeImages/101921-312x231.jpg",
+      "readyInMinutes": 15,
+      "servings": 4,
+      "title": "Alicia's Guacamole *allergy Friendly*"
+    },
+    {
+      "id": 605570,
+      "image": "https://spoonacular.com/recipeImages/605570-312x231.jpg",
+      "readyInMinutes": 45,
+      "servings": 6,
+      "title": "*Ginger Shrimp and Broccoli"
+    },
+    {
+      "id": 558782,
+      "image": "https://spoonacular.com/recipeImages/558782-312x231.jpg",
+      "readyInMinutes": 15,
+      "servings": 4,
+      "title": "The *Only* Buttermilk Pancakes"
+    },
+    {
+      "id": 85640,
+      "image": "https://spoonacular.com/recipeImages/85640-312x231.jpg",
+      "readyInMinutes": 20,
+      "servings": 6,
+      "title": "Rc's Salmon With Basil Cream Sauce. *****"
+    },
+    {
+      "id": 585917,
+      "image": "https://spoonacular.com/recipeImages/585917-312x231.jpg",
+      "readyInMinutes": 45,
+      "servings": 5,
+      "title": "Baked *Fried* Chicken"
+    },
+    {
+      "id": 563425,
+      "image": "https://spoonacular.com/recipeImages/563425-312x231.jpg",
+      "readyInMinutes": 60,
+      "servings": 4,
+      "title": "Individual Baked Egg *Muffins"
+    }
+  ]
+}
