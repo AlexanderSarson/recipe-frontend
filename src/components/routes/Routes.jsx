@@ -6,10 +6,11 @@ import Scrape from '../scrape/Scrape.jsx';
 import Jokes from '../jokes/';
 import Home from '../home/';
 import ProtectedRoute from './ProtectedRoute.jsx';
-import Unauthorized from '../unauthorized/';
+import Unauthorized from '../unauthorized';
 import SearchPage from '../search';
 import ProvideSearch from '../../hooks/useSearch.jsx';
 import RecipeDetails from '../recipeDetails/RecipeDetails.jsx';
+import RandomRecipe from '../featured/RandomRecipe.jsx'
 
 const Routes = () => {
   return (
@@ -34,6 +35,10 @@ const Routes = () => {
         <ProvideSearch>
           <SearchPage />
         </ProvideSearch>
+      </Route>
+
+      <Route exact path='/randomRecipe'>
+        <RandomRecipe/>
       </Route>
 
       <Route path={`/details/:recipeId`}>

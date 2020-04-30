@@ -63,6 +63,10 @@ export default function Header() {
           Search
         </Menu.Item>
 
+        <Menu.Item as={NavLink} exact to='/randomRecipe' name='search'>
+          Random Recipe
+        </Menu.Item>
+
         {handleLoginLogOut()}
       </Container>
     </Menu>
