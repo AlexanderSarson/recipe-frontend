@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -10,33 +10,35 @@ import {
 } from 'semantic-ui-react';
 import { useAuth } from '../../hooks/useAuth.jsx';
 import { useHistory } from 'react-router-dom';
+import { apiUtils } from '../../utils/apiUtils';
 
-export default function LogIn({ hideModal }) {
+export default function SignUp({ hideModal }) {
   const { signIn, isLoading } = useAuth();
   const init = { username: '', password: '', password2: '' };
+  const signUpCredentials = useRef(init);
   const [isSamePassword, setIsSamePassword] = useState(false);
-  const [signUpCredentials, setSignUpCredentials] = useState(init);
   let history = useHistory();
 
   const handleLogin = (evt) => {
     evt.preventDefault();
-    signIn(signUpCredentials.username, signUpCredentials.password);
-    hideModal();
+    const opt = apiUtils.makeOptions('POST', { username: signUpCredentials.current.username, password: signUpCredentials.current.password });
+    apiUtils.fetchData('/login/create', opt)
+      .then(() => {
+        signIn(signUpCredentials.current.username, signUpCredentials.current.password);
+        history.push('/');
+      });
   };
 
   const onChange = (evt) => {
-    setSignUpCredentials({
-      ...signUpCredentials,
-      [evt.target.id]: evt.target.value
-    });
+    signUpCredentials.current[evt.target.id] = evt.target.value;
     comparePassword();
   };
 
   const comparePassword = () => {
-    if (signUpCredentials.password.length === 0 || signUpCredentials.password2.length === 0) {
+    if (signUpCredentials.current.password.length === 0 || signUpCredentials.current.password2.length === 0) {
       setIsSamePassword(false);
     } else {
-      setIsSamePassword(signUpCredentials.password === signUpCredentials.password2);
+      setIsSamePassword(signUpCredentials.current.password === signUpCredentials.current.password2);
     }
 
   };
