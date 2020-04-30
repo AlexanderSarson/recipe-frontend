@@ -25,7 +25,8 @@ export default function SignUp() {
     const opt = apiUtils.makeOptions('POST', { username: signUpCredentials.current.username, password: signUpCredentials.current.password });
     const res = await fetch(`${backendUrl}/login/create`, opt);
     const json = await res.json();
-    if (json.status === 200) {
+    console.log(json);
+    if (json.username !== null && json.token !== null) {
       signIn(signUpCredentials.current.username, signUpCredentials.current.password);
       history.push('/');
     } else {
