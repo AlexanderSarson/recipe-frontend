@@ -6,12 +6,12 @@ const DescriptionBox = ({ recipe }) => {
   return (
     <Segment padded>
       <Header horizontal section>
-        {recipe.default.title}
+        {recipe.title}
       </Header>
       <Divider hidden />
       <IconHandler recipe={recipe} />
       <Divider hidden />
-      <div dangerouslySetInnerHTML={{ __html: recipe.default.summary }} />
+      <div dangerouslySetInnerHTML={{ __html: recipe.summary }} />
     </Segment>
   );
 };
