@@ -9,6 +9,6 @@ describe('Random Recipe', () => {
     cy.wait(1000);
   });
   it('Search for Content', () => {
-    cy.get('.Header').should('exist');
+    cy.get('.header').should('exist');
   });
 });
