@@ -13,10 +13,10 @@ const IconHandler = ({ recipe }) => {
     <>
       <Grid columns='equal'>
         <Column textAlign='center'>
-          <Icon circular name='food' /> {recipe.default.servings} servings
+          <Icon circular name='food' /> {recipe.servings} servings
         </Column>
         <Column textAlign='center'>
-          <Icon circular name='clock' /> {recipe.default.readyInMinutes} minutes
+          <Icon circular name='clock' /> {recipe.readyInMinutes} minutes
         </Column>
         <Column textAlign='center'>
           <Popup
@@ -48,10 +48,10 @@ const IconHandler = ({ recipe }) => {
               <Icon
                 size='large'
                 name='leaf'
-                color={recipe.default.vegan ? 'green' : 'grey'}
+                color={recipe.vegan ? 'green' : 'grey'}
               />
             }
-            content={recipe.default.vegan ? 'Vegan' : 'Non-vegan'}
+            content={recipe.vegan ? 'Vegan' : 'Non-vegan'}
             position='bottom left'
           />
         </Column>
@@ -61,12 +61,10 @@ const IconHandler = ({ recipe }) => {
               <Icon
                 size='large'
                 name='lemon'
-                color={recipe.default.vegetarian ? 'yellow' : 'grey'}
+                color={recipe.vegetarian ? 'yellow' : 'grey'}
               />
             }
-            content={
-              recipe.default.vegetarian ? 'Vegetarian' : 'Non-vegetarian'
-            }
+            content={recipe.vegetarian ? 'Vegetarian' : 'Non-vegetarian'}
             position='bottom left'
           />
         </Column>
@@ -76,12 +74,10 @@ const IconHandler = ({ recipe }) => {
               <Icon
                 size='large'
                 name='heartbeat'
-                color={recipe.default.veryHealthy ? 'red' : 'grey'}
+                color={recipe.veryHealthy ? 'red' : 'grey'}
               />
             }
-            content={
-              recipe.default.veryHealthy ? 'Very healthy' : 'Not very healthy'
-            }
+            content={recipe.veryHealthy ? 'Very healthy' : 'Not very healthy'}
             position='bottom left'
           />
         </Column>
