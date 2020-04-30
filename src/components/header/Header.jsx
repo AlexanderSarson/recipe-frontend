@@ -63,7 +63,7 @@ export default function Header() {
           Search
         </Menu.Item>
 
-        <Menu.Item as={NavLink} exact to='/randomRecipe' name='search'>
+        <Menu.Item as={NavLink} exact to='/randomRecipe' name='randomRecipe'>
           Random Recipe
         </Menu.Item>
 

@@ -10,7 +10,7 @@ import Unauthorized from '../unauthorized';
 import SearchPage from '../search';
 import ProvideSearch from '../../hooks/useSearch.jsx';
 import RecipeDetails from '../recipeDetails/RecipeDetails.jsx';
-import RandomRecipe from '../featured/RandomRecipe.jsx'
+import RandomRecipe from '../random/RandomRecipe.jsx'
 
 const Routes = () => {
   return (
@@ -38,7 +38,7 @@ const Routes = () => {
       </Route>
 
       <Route exact path='/randomRecipe'>
-        <RandomRecipe/>
+        <RandomRecipe />
       </Route>
 
       <Route path={`/details/:recipeId`}>
