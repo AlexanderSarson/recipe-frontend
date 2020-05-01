@@ -30,7 +30,7 @@ const fetchData = async (url, opts) => {
 };
 
 export const apiUtils = {
-  fetchData: fetchData,
-  handleHttpErrors: handleHttpErrors,
-  makeOptions: makeOptions
+  fetchData,
+  handleHttpErrors,
+  makeOptions
 };

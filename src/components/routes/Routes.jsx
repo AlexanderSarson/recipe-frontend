@@ -6,10 +6,13 @@ import Scrape from '../scrape/Scrape.jsx';
 import Jokes from '../jokes/';
 import Home from '../home/';
 import ProtectedRoute from './ProtectedRoute.jsx';
-import Unauthorized from '../unauthorized/';
+import Unauthorized from '../unauthorized';
 import SearchPage from '../search';
 import ProvideSearch from '../../hooks/useSearch.jsx';
 import RecipeDetails from '../recipeDetails/RecipeDetails.jsx';
+import RandomRecipe from '../random/RandomRecipe.jsx'
+import SignUp from '../login/SignUp.jsx';
+import Modal from '../utils/Modal.jsx';
 
 const Routes = () => {
   return (
@@ -36,12 +39,22 @@ const Routes = () => {
         </ProvideSearch>
       </Route>
 
+      <Route exact path='/randomRecipe'>
+        <RandomRecipe />
+      </Route>
+
       <Route path={`/details/:recipeId`}>
         <RecipeDetails />
       </Route>
 
       <Route exact path='/unauthorized'>
         <Unauthorized />
+      </Route>
+
+      <Route path='/signUp'>
+        <Modal>
+          <SignUp />
+        </Modal>
       </Route>
 
       <Route>

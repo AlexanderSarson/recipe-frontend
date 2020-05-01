@@ -5,7 +5,7 @@ import IconHandler from './IconHandler.jsx';
 const DescriptionBox = ({ recipe }) => {
   return (
     <Segment padded>
-      <Header horizontal section>
+      <Header label horizontal section>
         {recipe.title}
       </Header>
       <Divider hidden />

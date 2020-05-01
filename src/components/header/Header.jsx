@@ -26,7 +26,7 @@ export default function Header() {
         <Menu.Item position='right'>
           <Button
             as={Link}
-            to='/signup'
+            to='/signUp'
             primary
             style={{ marginRight: '0.5em' }}
           >
@@ -45,22 +45,26 @@ export default function Header() {
           Home
         </Menu.Item>
 
-        <Menu.Item as={NavLink} exact to='/jokes' name='jokes'>
+        <Menu.Item as={NavLink} to='/jokes' name='jokes'>
           Jokes
         </Menu.Item>
 
         {authenticateRole('admin') && (
-          <Menu.Item as={NavLink} exact to='/scrape' name='scrape'>
+          <Menu.Item as={NavLink} to='/scrape' name='scrape'>
             Scrape
           </Menu.Item>
         )}
 
-        <Menu.Item as={NavLink} exact to='/content3' name='jokes'>
+        <Menu.Item as={NavLink} to='/content3' name='jokes'>
           Content 3
         </Menu.Item>
 
-        <Menu.Item as={NavLink} exact to='/search' name='search'>
+        <Menu.Item as={NavLink} to='/search' name='search'>
           Search
+        </Menu.Item>
+
+        <Menu.Item as={NavLink} to='/randomRecipe' name='randomRecipe'>
+          Random Recipe
         </Menu.Item>
 
         {handleLoginLogOut()}
