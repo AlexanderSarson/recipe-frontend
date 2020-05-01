@@ -3,7 +3,6 @@ import { NavLink, Link } from 'react-router-dom';
 import { Menu, Container, Button } from 'semantic-ui-react';
 import { useAuth } from '../../hooks/useAuth.jsx';
 import LoginModal from '../login/LoginModal.jsx';
-import SignUp from '../login/SignUp.jsx';
 
 export default function Header() {
   const {
@@ -23,20 +22,20 @@ export default function Header() {
         <LoginModal />
       </Menu.Item>
     ) : (
-        <>
-          <Menu.Item position='right'>
-            <Button
-              as={Link}
-              to='/signUp'
-              primary
-              style={{ marginRight: '0.5em' }}
-            >
-              Sign Up
+      <>
+        <Menu.Item position='right'>
+          <Button
+            as={Link}
+            to='/signUp'
+            primary
+            style={{ marginRight: '0.5em' }}
+          >
+            Sign Up
           </Button>
-            <LoginModal />
-          </Menu.Item>
-        </>
-      );
+          <LoginModal />
+        </Menu.Item>
+      </>
+    );
   };
 
   return (

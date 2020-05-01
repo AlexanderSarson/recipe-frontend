@@ -17,7 +17,7 @@ const Modal = ({ children }) => {
     }
     document.addEventListener('keydown', keyListener);
     return () => modalRoot.removeChild(containerDiv);
-  }, [containerDiv]);
+  }, [containerDiv, history]);
 
   return createPortal(children, containerDiv);
 };
