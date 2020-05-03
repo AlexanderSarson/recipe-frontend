@@ -3,6 +3,7 @@ import Header from './components/header';
 import Routes from './components/routes/';
 import { Container } from 'semantic-ui-react';
 import ProvideAuth from './hooks/useAuth.jsx';
+import ProvideUser from './hooks/useUser.jsx';
 import { StateProvider } from './contexts/StateContext.jsx';
 
 function App() {
@@ -11,10 +12,12 @@ function App() {
   return (
     <StateProvider>
       <ProvideAuth>
-        <Header />
-        <Container>
-          <Routes />
-        </Container>
+        <ProvideUser>
+          <Header />
+          <Container>
+            <Routes />
+          </Container>
+        </ProvideUser>
       </ProvideAuth>
     </StateProvider>
   );

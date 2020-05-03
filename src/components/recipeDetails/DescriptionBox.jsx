@@ -2,7 +2,7 @@ import React from 'react';
 import { Segment, Header, Divider } from 'semantic-ui-react';
 import IconHandler from './IconHandler.jsx';
 
-const DescriptionBox = ({ recipe }) => {
+const DescriptionBox = (recipe) => {
   return (
     <Segment padded>
       <Header label horizontal section>

@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid, Icon, Popup, Divider, Header } from 'semantic-ui-react';
+import { useUser } from '../../hooks/useUser.jsx';
 
 const IconHandler = ({ recipe }) => {
-  const [favourite, setFavourite] = useState(false);
+  const { addRemoveFavourite, isFavourite } = useUser();
 
   const handleFavourite = () => {
-    setFavourite(!favourite);
+    isFavourite(recipe.id)
+      ? addRemoveFavourite(recipe, 'remove')
+      : addRemoveFavourite(recipe, 'add');
   };
 
   const Column = Grid.Column;
@@ -24,12 +27,16 @@ const IconHandler = ({ recipe }) => {
               <Icon.Group size='large' onClick={handleFavourite}>
                 <Icon
                   color='red'
-                  name={favourite ? 'heart' : 'heart outline'}
+                  name={isFavourite(recipe.id) ? 'heart' : 'heart outline'}
                 />
-                <Icon corner name={favourite ? 'minus' : 'add'} />
+                <Icon corner name={isFavourite(recipe.id) ? 'minus' : 'add'} />
               </Icon.Group>
             }
-            content={favourite ? 'Remove from favourites' : 'Add to favourites'}
+            content={
+              isFavourite(recipe.id)
+                ? 'Remove from favourites'
+                : 'Add to favourites'
+            }
             position='bottom left'
           />
         </Column>

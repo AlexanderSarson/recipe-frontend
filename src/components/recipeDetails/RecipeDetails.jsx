@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Segment, Image, Grid, Dimmer, Loader } from 'semantic-ui-react';
 import IngredientTable from './IngredientsTable.jsx';
@@ -40,7 +40,7 @@ const RecipeDetails = () => {
               <Image src={recipe.image} size='large' centered rounded />
             </Column>
             <Column width={8}>
-              <DescriptionBox recipe={recipe} />
+              <DescriptionBox recipe={recipe} value={useEffect} />
             </Column>
           </Row>
 

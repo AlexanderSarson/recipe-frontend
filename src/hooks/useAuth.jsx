@@ -69,6 +69,15 @@ const useProvideAuth = () => {
     return isLoggedIn && roles.includes(role);
   };
 
+  const favourite = (_action, _recipe) => {
+    const opts = apiUtils.makeOptions('POST', {
+      action: _action,
+      username: name,
+      recipe: _recipe
+    });
+    console.log(opts);
+  };
+
   // Return user object and auth methods
   return {
     user: {
@@ -80,6 +89,9 @@ const useProvideAuth = () => {
     },
     signIn,
     signOut,
+
+    favourite,
+
     isLoading
   };
 };
