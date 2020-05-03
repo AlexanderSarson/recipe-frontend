@@ -92,15 +92,17 @@ const SearchPage = () => {
         {generalResult && (
           <Button.Group>
             <Button
+              id={'previousBtn'}
               disabled={isAtStart()}
               content='Previous'
               icon='left arrow'
               labelPosition='left'
               onClick={searchBackward}
             />
-            <Label>{getPageText()}</Label>
+            <Label id={'pageLabel'}>{getPageText()}</Label>
             <Button
               positive
+              id={'nextBtn'}
               disabled={isAtEnd()}
               content='Next'
               icon='right arrow'
