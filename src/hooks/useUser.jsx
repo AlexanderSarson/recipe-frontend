@@ -54,7 +54,7 @@ const useProvideUser = () => {
   };
 
   const isFavourite = (id) => {
-    return favourites.filter((favourite) => favourite.id === id) > 0;
+    return favourites.some((favourite) => favourite.id === id);
   };
 
   return {
