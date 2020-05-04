@@ -11,7 +11,8 @@ const useProvideSearch = () => {
   const emptyQuery = {
     search: '*',
     number: 10,
-    moveOffset: ''
+    moveOffset: '',
+    sessionId: ''
   };
   const [query, setQuery] = useState(emptyQuery);
   const [isLoading, setIsLoading] = useState(false);

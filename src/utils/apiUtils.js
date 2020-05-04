@@ -23,15 +23,17 @@ const makeOptions = (method, body = null, token = true) => {
     method: method,
     headers: {
       'Content-type': 'application/json',
-      Accept: 'application/json',
-      sessionId: sessionId
+      Accept: 'application/json'
     }
   };
   if (token) {
     opts.headers['x-access-token'] = localStorage.getItem('jwtToken');
   }
   if (body) {
+    body.sessionId = sessionId;
     opts.body = JSON.stringify(body);
+  } else {
+    opts.body = { sessionId: sessionId };
   }
   return opts;
 };

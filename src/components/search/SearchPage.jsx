@@ -25,7 +25,6 @@ const SearchPage = () => {
   };
 
   const getPageText = () => {
-    console.log(generalResult);
     let currentPageNumber = Math.floor(
       generalResult.offset / generalResult.number + 1
     );
