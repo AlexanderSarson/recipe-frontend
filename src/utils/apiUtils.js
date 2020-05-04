@@ -32,7 +32,7 @@ const makeOptions = (method, body = null, token = true) => {
   if (body) {
     body.sessionId = sessionId;
     opts.body = JSON.stringify(body);
-  } else {
+  } else if (method === 'POST') {
     opts.body = { sessionId: sessionId };
   }
   return opts;
