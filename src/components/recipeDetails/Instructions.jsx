@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, Header, Divider, Icon } from 'semantic-ui-react';
+import { v4 as uuid } from 'uuid';
 
 const Instructions = ({ instructions }) => {
   const Item = List.Item;
@@ -9,12 +10,12 @@ const Instructions = ({ instructions }) => {
       <List>
         <Header>{instruction.name}</Header>
         {instruction.steps.map((_step) => (
-          <>
-            <Item key={_step.number}>
+          <div key={uuid()}>
+            <Item>
               {_step.number}. {_step.step}
             </Item>
             <Divider />
-          </>
+          </div>
         ))}
       </List>
     );
@@ -28,7 +29,9 @@ const Instructions = ({ instructions }) => {
           Instructions
         </Header>
       </Divider>
-      {instructions.map((instructionSet) => handleInstruction(instructionSet))}
+      {instructions.map((instructionSet) => (
+        <div key={uuid()}>{handleInstruction(instructionSet)}</div>
+      ))}
     </>
   );
 };

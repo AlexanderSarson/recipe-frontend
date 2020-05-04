@@ -1,27 +1,34 @@
 import React from 'react';
 import { Grid, Icon, Popup, Divider, Header } from 'semantic-ui-react';
 import { useUser } from '../../hooks/useUser.jsx';
+import { useAuth } from '../../hooks/useAuth.jsx';
 
-const IconHandler = ({ recipe }) => {
+const IconHandler = ({ recipe, openModal }) => {
+  const {
+    user: { isLoggedIn }
+  } = useAuth();
   const { addRemoveFavourite, isFavourite } = useUser();
 
   const handleFavourite = () => {
-    isFavourite(recipe.id)
-      ? addRemoveFavourite(recipe, 'remove')
-      : addRemoveFavourite(recipe, 'add');
+    if (isLoggedIn) {
+      isFavourite(recipe.id, isLoggedIn)
+        ? addRemoveFavourite(recipe, 'remove')
+        : addRemoveFavourite(recipe, 'add');
+    } else {
+      openModal();
+    }
   };
 
-  const Column = Grid.Column;
   return (
     <>
       <Grid columns='equal'>
-        <Column textAlign='center'>
+        <Grid.Column textAlign='center'>
           <Icon circular name='food' /> {recipe.servings} servings
-        </Column>
-        <Column textAlign='center'>
+        </Grid.Column>
+        <Grid.Column textAlign='center'>
           <Icon circular name='clock' /> {recipe.readyInMinutes} minutes
-        </Column>
-        <Column textAlign='center'>
+        </Grid.Column>
+        <Grid.Column textAlign='center'>
           <Popup
             trigger={
               <Icon.Group size='large' onClick={handleFavourite}>
@@ -33,13 +40,13 @@ const IconHandler = ({ recipe }) => {
               </Icon.Group>
             }
             content={
-              isFavourite(recipe.id)
+              isFavourite(recipe.id, isLoggedIn)
                 ? 'Remove from favourites'
                 : 'Add to favourites'
             }
             position='bottom left'
           />
-        </Column>
+        </Grid.Column>
       </Grid>
 
       <Divider horizontal section>
@@ -49,7 +56,7 @@ const IconHandler = ({ recipe }) => {
         </Header>
       </Divider>
       <Grid columns='equal'>
-        <Column textAlign='center'>
+        <Grid.Column textAlign='center'>
           <Popup
             trigger={
               <Icon
@@ -61,8 +68,8 @@ const IconHandler = ({ recipe }) => {
             content={recipe.vegan ? 'Vegan' : 'Non-vegan'}
             position='bottom left'
           />
-        </Column>
-        <Column textAlign='center'>
+        </Grid.Column>
+        <Grid.Column textAlign='center'>
           <Popup
             trigger={
               <Icon
@@ -74,8 +81,8 @@ const IconHandler = ({ recipe }) => {
             content={recipe.vegetarian ? 'Vegetarian' : 'Non-vegetarian'}
             position='bottom left'
           />
-        </Column>
-        <Column textAlign='center'>
+        </Grid.Column>
+        <Grid.Column textAlign='center'>
           <Popup
             trigger={
               <Icon
@@ -87,7 +94,7 @@ const IconHandler = ({ recipe }) => {
             content={recipe.veryHealthy ? 'Very healthy' : 'Not very healthy'}
             position='bottom left'
           />
-        </Column>
+        </Grid.Column>
       </Grid>
     </>
   );

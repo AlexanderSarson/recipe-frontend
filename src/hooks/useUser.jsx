@@ -1,22 +1,24 @@
-import React, { useState, useContext, useEffect, createContext } from 'react';
+import React, { useState, useContext, createContext, useEffect } from 'react';
 import { apiUtils } from '../utils/apiUtils';
-import { useAuth } from '../hooks/useAuth.jsx';
+import { getUserAndRoles } from '../utils/JwtTokenParser';
 
 const userContext = createContext();
 
 const useProvideUser = () => {
   const [favourites, setFavourites] = useState([]);
-  const {
-    user: { name }
-  } = useAuth();
+  const [username, setUsername] = useState();
 
   useEffect(() => {
-    getFavourites(name);
-  }, [name]);
+    const jwtToken = localStorage.getItem('jwtToken');
+    if (jwtToken) {
+      const { username } = getUserAndRoles(jwtToken);
+      setUsername(username);
+      getFavourites(username);
+    }
+  }, []);
 
   const getFavourites = async (name) => {
     const opts = apiUtils.makeOptions('GET');
-
     try {
       const res = await apiUtils.fetchData(`/user/favourites/${name}`, opts);
       setFavourites(res.favouriteRecipes);
@@ -29,9 +31,9 @@ const useProvideUser = () => {
     }
   };
 
-  const addRemoveFavourite = (recipe, _action) => {
+  const addRemoveFavourite = async (recipe, _action) => {
     const opts = apiUtils.makeOptions('POST', {
-      username: name,
+      username: username,
       action: _action,
       recipe: {
         id: recipe.id,
@@ -42,7 +44,7 @@ const useProvideUser = () => {
       }
     });
     try {
-      const res = apiUtils.fetchData('/user/favourite', opts);
+      const res = await apiUtils.fetchData('/user/favourites', opts);
       setFavourites(res.favouriteRecipes);
     } catch (error) {
       if (error.status) {
@@ -54,13 +56,17 @@ const useProvideUser = () => {
   };
 
   const isFavourite = (id) => {
-    return favourites.some((favourite) => favourite.id === id);
+    if (username) {
+      return favourites.some((favourite) => favourite.id === id);
+    }
+    return false;
   };
 
   return {
     getFavourites,
     addRemoveFavourite,
-    isFavourite
+    isFavourite,
+    favourites
   };
 };
 
