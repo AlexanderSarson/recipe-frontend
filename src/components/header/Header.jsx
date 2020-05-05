@@ -14,6 +14,9 @@ export default function Header() {
     return isLoggedIn ? (
       <Menu.Item position='right'>
         <Button
+          as={NavLink}
+          id='userpageBtn'
+          to={`/user/${name}`}
           content={name}
           icon='user'
           primary

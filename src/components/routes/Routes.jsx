@@ -10,9 +10,10 @@ import Unauthorized from '../unauthorized';
 import SearchPage from '../search';
 import ProvideSearch from '../../hooks/useSearch.jsx';
 import RecipeDetails from '../recipeDetails/RecipeDetails.jsx';
-import RandomRecipe from '../random/RandomRecipe.jsx'
+import RandomRecipe from '../random/RandomRecipe.jsx';
 import SignUp from '../login/SignUp.jsx';
 import Modal from '../utils/Modal.jsx';
+import UserPage from '../userpage/UserPage';
 
 const Routes = () => {
   return (
@@ -46,6 +47,10 @@ const Routes = () => {
       <Route path={`/details/:recipeId`}>
         <RecipeDetails />
       </Route>
+
+      <ProtectedRoute authenticatedRoles={['user']} path={`/user/:username`}>
+        <UserPage />
+      </ProtectedRoute>
 
       <Route exact path='/unauthorized'>
         <Unauthorized />
