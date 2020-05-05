@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Button,
   Form,
@@ -9,7 +8,7 @@ import {
   Segment
 } from 'semantic-ui-react';
 import { useAuth } from '../../hooks/useAuth.jsx';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { apiUtils } from '../../utils/apiUtils';
 import { backendUrl } from '../../config/settings';
 
@@ -18,20 +17,25 @@ export default function SignUp() {
   const init = { username: '', password: '', password2: '' };
   const signUpCredentials = useRef(init);
   const [isSamePassword, setIsSamePassword] = useState(false);
-  let history = useHistory();
+  const history = useHistory();
 
   const handleSignUp = async (evt) => {
     evt.preventDefault();
-    const opt = apiUtils.makeOptions('POST', { username: signUpCredentials.current.username, password: signUpCredentials.current.password });
+    const opt = apiUtils.makeOptions('POST', {
+      username: signUpCredentials.current.username,
+      password: signUpCredentials.current.password
+    });
     const res = await fetch(`${backendUrl}/login/create`, opt);
     const json = await res.json();
     if (json.username !== null && json.token !== null) {
-      signIn(signUpCredentials.current.username, signUpCredentials.current.password);
+      signIn(
+        signUpCredentials.current.username,
+        signUpCredentials.current.password
+      );
       history.push('/');
     } else {
       alert(json.message);
     }
-
   };
 
   const onChange = (evt) => {
@@ -40,17 +44,22 @@ export default function SignUp() {
   };
 
   const comparePassword = () => {
-    if (signUpCredentials.current.password.length === 0 || signUpCredentials.current.password2.length === 0) {
+    if (
+      signUpCredentials.current.password.length === 0 ||
+      signUpCredentials.current.password2.length === 0
+    ) {
       setIsSamePassword(false);
     } else {
-      setIsSamePassword(signUpCredentials.current.password === signUpCredentials.current.password2);
+      setIsSamePassword(
+        signUpCredentials.current.password ===
+          signUpCredentials.current.password2
+      );
     }
-
   };
 
   const handleCancel = () => {
     history.push('/');
-  }
+  };
 
   return (
     <Grid

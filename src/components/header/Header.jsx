@@ -7,7 +7,7 @@ import LoginModal from '../login/LoginModal.jsx';
 export default function Header() {
   const {
     // eslint-disable-next-line no-unused-vars
-    user: { isLoggedIn, name, roles, authenticateRole }
+    user: { isLoggedIn, name, authenticateRole }
   } = useAuth();
 
   const handleLoginLogOut = () => {
