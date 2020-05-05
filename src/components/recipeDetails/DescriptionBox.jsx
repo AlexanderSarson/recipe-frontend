@@ -1,17 +1,13 @@
 import React from 'react';
-import { Segment, Header, Divider } from 'semantic-ui-react';
-import IconHandler from './IconHandler.jsx';
+import { Segment, Header } from 'semantic-ui-react';
 
-const DescriptionBox = ({ recipe }) => {
+const DescriptionBox = ({ children, recipe }) => {
   return (
     <Segment padded>
       <Header label horizontal section>
         {recipe.title}
       </Header>
-      <Divider hidden />
-      <IconHandler recipe={recipe} />
-      <Divider hidden />
-      <div dangerouslySetInnerHTML={{ __html: recipe.summary }} />
+      {children}
     </Segment>
   );
 };

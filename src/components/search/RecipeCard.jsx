@@ -5,11 +5,7 @@ import { Link } from 'react-router-dom';
 const RecipeCard = ({ recipe }) => {
   return (
     <Card as={Link} to={`/details/${recipe.id}`}>
-      <Image
-        src='https://dizzybusyandhungry.com/wp-content/uploads/2019/06/ground-turkey-pasta-broccoli-dinner-close-up.jpg'
-        wrapped
-        ui={false}
-      />
+      <Image src={recipe.image} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{recipe.title}</Card.Header>
         <Card.Meta>
