@@ -23,7 +23,7 @@ export default function Header() {
           style={{ marginRight: '0.5em' }}
         />
         <NewModal
-          trigger={<Button>LogOut</Button>}
+          trigger={<Button>Logout</Button>}
           headerMessage='Log out'
           handleCloseModal={() => setOpenModal(false)}
         >

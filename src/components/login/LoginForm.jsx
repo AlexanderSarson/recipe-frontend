@@ -46,6 +46,7 @@ const LoginForm = ({ hideModal }) => {
 
       <Button
         fluid
+        id='loginBtn'
         content='Login'
         primary
         loading={isLoading}

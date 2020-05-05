@@ -8,12 +8,12 @@ const LoginModalForm = ({ hideModal }) => {
     <Segment placeholder>
       <Grid columns={2} relaxed='very' stackable>
         <Grid.Column textAlign='center' verticalAlign='middle'>
-          <Header>Login</Header>
+          <Header>Welcome back. Sign in below!</Header>
           <LoginForm hideModal={hideModal} />
         </Grid.Column>
 
         <Grid.Column textAlign='center' verticalAlign='middle'>
-          <Header>Sign Up</Header>
+          <Header>Dont have an account? Create one below!</Header>
           <SignUpForm hideModal={hideModal} />
         </Grid.Column>
       </Grid>
