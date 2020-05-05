@@ -45,19 +45,11 @@ export default function Header() {
           Home
         </Menu.Item>
 
-        <Menu.Item as={NavLink} to='/jokes' name='jokes'>
-          Jokes
-        </Menu.Item>
-
         {authenticateRole('admin') && (
           <Menu.Item as={NavLink} to='/scrape' name='scrape'>
             Scrape
           </Menu.Item>
         )}
-
-        <Menu.Item as={NavLink} to='/content3' name='jokes'>
-          Content 3
-        </Menu.Item>
 
         <Menu.Item as={NavLink} to='/search' name='search'>
           Search
