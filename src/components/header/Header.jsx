@@ -1,14 +1,17 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Menu, Container, Button } from 'semantic-ui-react';
 import { useAuth } from '../../hooks/useAuth.jsx';
-import LoginModal from '../login/LoginModal.jsx';
+import NewModal from '../utils/NewModal.jsx';
+import LoginModalForm from '../login/LoginModalForm.jsx';
+import Logout from '../login/Logout.jsx';
 
 export default function Header() {
   const {
     // eslint-disable-next-line no-unused-vars
     user: { isLoggedIn, name, roles, authenticateRole }
   } = useAuth();
+  const [openModal, setOpenModal] = useState(false);
 
   const handleLoginLogOut = () => {
     return isLoggedIn ? (
@@ -19,20 +22,34 @@ export default function Header() {
           primary
           style={{ marginRight: '0.5em' }}
         />
-        <LoginModal />
+        <NewModal
+          trigger={<Button>LogOut</Button>}
+          headerMessage='Log out'
+          handleCloseModal={() => setOpenModal(false)}
+        >
+          <Logout hideModal={() => setOpenModal(false)} />
+        </NewModal>
       </Menu.Item>
     ) : (
       <>
         <Menu.Item position='right'>
           <Button
-            as={Link}
-            to='/signUp'
             primary
             style={{ marginRight: '0.5em' }}
+            onClick={() => setOpenModal(true)}
           >
             Sign Up
           </Button>
-          <LoginModal />
+
+          <Button onClick={() => setOpenModal(true)}>Login</Button>
+
+          <NewModal
+            open={openModal}
+            headerMessage={'Login'}
+            handleCloseModal={() => setOpenModal(false)}
+          >
+            <LoginModalForm hideModal={() => setOpenModal(false)} />
+          </NewModal>
         </Menu.Item>
       </>
     );
