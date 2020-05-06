@@ -12,7 +12,9 @@ const useProvideSearch = () => {
     search: '*',
     number: 10,
     moveOffset: '',
-    sessionId: ''
+    sessionId: '',
+    ingredients: [],
+    cuisines: []
   };
   const [query, setQuery] = useState(emptyQuery);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +22,8 @@ const useProvideSearch = () => {
   const [generalResult, setGenerelResult] = useState(null);
 
   useEffect(() => {
-    search(query);
+    console.log(search);
+    //search(query);
   }, [query]);
 
   const search = async (query) => {
