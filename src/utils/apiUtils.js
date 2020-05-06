@@ -1,4 +1,5 @@
 import { backendUrl } from '../config/settings';
+import uuid from 'react-uuid';
 
 const handleHttpErrors = (res) => {
   if (!res.ok) {
@@ -7,7 +8,17 @@ const handleHttpErrors = (res) => {
   return res.json();
 };
 
+const getSessionId = () => {
+  let sessionId = sessionStorage.getItem('sessionId');
+  if (sessionId === null) {
+    sessionId = uuid();
+    sessionStorage.setItem('sessionId', sessionId);
+  }
+  return sessionId;
+};
+
 const makeOptions = (method, body = null, token = true) => {
+  let sessionId = getSessionId();
   const opts = {
     method: method,
     headers: {
@@ -19,7 +30,10 @@ const makeOptions = (method, body = null, token = true) => {
     opts.headers['x-access-token'] = localStorage.getItem('jwtToken');
   }
   if (body) {
+    body.sessionId = sessionId;
     opts.body = JSON.stringify(body);
+  } else if (method === 'POST') {
+    opts.body = { sessionId: sessionId };
   }
   return opts;
 };
