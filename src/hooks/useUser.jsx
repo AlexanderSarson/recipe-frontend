@@ -7,6 +7,7 @@ const userContext = createContext();
 const useProvideUser = () => {
   const [favourites, setFavourites] = useState([]);
   const [username, setUsername] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const jwtToken = localStorage.getItem('jwtToken');
@@ -20,9 +21,12 @@ const useProvideUser = () => {
   const getFavourites = async (name) => {
     const opts = apiUtils.makeOptions('GET');
     try {
+      setIsLoading(true);
       const res = await apiUtils.fetchData(`/user/favourites/${name}`, opts);
       setFavourites(res.favouriteRecipes);
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       if (error.status) {
         error.fullError.then((e) => alert(e.message));
       } else {
@@ -63,6 +67,7 @@ const useProvideUser = () => {
   };
 
   return {
+    isLoading,
     getFavourites,
     addRemoveFavourite,
     isFavourite,
