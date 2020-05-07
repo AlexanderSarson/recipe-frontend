@@ -5,13 +5,13 @@ import { Form, Button } from 'semantic-ui-react';
 const LoginForm = ({ hideModal }) => {
   const { signIn, isLoading } = useAuth();
   const [loginCredentials, setLoginCredentials] = useState({
-    username: '',
-    password: ''
+    loginUsername: '',
+    loginPassword: ''
   });
 
   const handleLogin = (evt) => {
     evt.preventDefault();
-    signIn(loginCredentials.username, loginCredentials.password);
+    signIn(loginCredentials.loginUsername, loginCredentials.loginPassword);
     hideModal();
   };
 
@@ -46,6 +46,7 @@ const LoginForm = ({ hideModal }) => {
 
       <Button
         fluid
+        id='loginBtn'
         content='Login'
         primary
         loading={isLoading}
