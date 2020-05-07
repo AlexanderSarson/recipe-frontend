@@ -10,7 +10,7 @@ const SignUpForm = () => {
   const init = { username: '', password: '', password2: '' };
   const signUpCredentials = useRef(init);
   const [isSamePassword, setIsSamePassword] = useState(false);
-  let history = useHistory();
+  const history = useHistory();
 
   const handleSignUp = async (evt) => {
     evt.preventDefault();
