@@ -9,7 +9,7 @@ import Logout from '../login/Logout.jsx';
 export default function Header() {
   const {
     // eslint-disable-next-line no-unused-vars
-    user: { isLoggedIn, name, roles, authenticateRole }
+    user: { isLoggedIn, name, authenticateRole }
   } = useAuth();
   const [openModal, setOpenModal] = useState(false);
 
@@ -60,20 +60,6 @@ export default function Header() {
       <Container>
         <Menu.Item as={NavLink} exact to='/' name='home'>
           Home
-        </Menu.Item>
-
-        <Menu.Item as={NavLink} to='/jokes' name='jokes'>
-          Jokes
-        </Menu.Item>
-
-        {authenticateRole('admin') && (
-          <Menu.Item as={NavLink} to='/scrape' name='scrape'>
-            Scrape
-          </Menu.Item>
-        )}
-
-        <Menu.Item as={NavLink} to='/content3' name='jokes'>
-          Content 3
         </Menu.Item>
 
         <Menu.Item as={NavLink} to='/search' name='search'>

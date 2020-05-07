@@ -6,7 +6,7 @@ const modalRoot = document.querySelector('#modal');
 
 const Modal = ({ children }) => {
   const containerDiv = document.createElement('div');
-  let history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     modalRoot.appendChild(containerDiv);

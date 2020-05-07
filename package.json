@@ -37,7 +37,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cy:open": "cypress open",
-    "cy:ci:test": "cypress run --env TEST_USER=$TEST_USER,TEST_PASSWORD=$TEST_PASSWORD --browser firefox --record --key 96097d76-c9e2-4dc0-b9e3-f2b30c4aac17"
+    "cy:ci:test": "cypress run --env TEST_USER=$TEST_USER,TEST_PASSWORD=$TEST_PASSWORD --browser firefox"
   },
   "eslintConfig": {
     "extends": "react-app"

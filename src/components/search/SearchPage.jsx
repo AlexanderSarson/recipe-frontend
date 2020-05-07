@@ -25,10 +25,10 @@ const SearchPage = () => {
   };
 
   const getPageText = () => {
-    let currentPageNumber = Math.floor(
+    const currentPageNumber = Math.floor(
       generalResult.offset / generalResult.number + 1
     );
-    let lastPageNumber = Math.floor(
+    const lastPageNumber = Math.floor(
       generalResult.totalResults / generalResult.number
     );
     return `Page ${currentPageNumber} of ${lastPageNumber}`;
