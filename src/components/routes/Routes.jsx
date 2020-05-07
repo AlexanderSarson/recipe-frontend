@@ -7,6 +7,8 @@ import SearchPage from '../search';
 import ProvideSearch from '../../hooks/useSearch.jsx';
 import RecipeDetails from '../recipeDetails/RecipeDetails.jsx';
 import RandomRecipe from '../random/RandomRecipe.jsx';
+import UserPage from '../userpage/UserPage.jsx';
+import ProtectedRoute from './ProtectedRoute.jsx';
 
 const Routes = () => {
   return (
@@ -28,6 +30,10 @@ const Routes = () => {
       <Route path={`/details/:recipeId`}>
         <RecipeDetails />
       </Route>
+
+      <ProtectedRoute authenticatedRoles={['user']} path={`/user/:username`}>
+        <UserPage />
+      </ProtectedRoute>
 
       <Route exact path='/unauthorized'>
         <Unauthorized />
