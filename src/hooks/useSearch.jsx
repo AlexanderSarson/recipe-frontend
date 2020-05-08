@@ -24,15 +24,17 @@ const useProvideSearch = () => {
   const [generalResult, setGenerelResult] = useState(null);
 
   useEffect(() => {
-    console.log(search);
-    //search(query);
+    search(query);
   }, [query]);
 
   const search = async (query) => {
     const options = apiUtils.makeOptions('POST', {
-      name: query.search,
-      number: 10,
-      moveOffset: query.moveOffset
+      ...query,
+      includeIngredients: query.includeIngredients.join(','),
+      excludeIngredients: query.excludeIngredients.join(','),
+      includeCuisines: query.includeCuisines.join(','),
+      excludeCuisines: query.excludeCuisines.join(','),
+      number: 10
     });
     try {
       setIsLoading(true);

@@ -47,7 +47,7 @@ const SearchPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setQuery({ search: inputQuery.search, moveOffset: '' });
+    setQuery(inputQuery);
   };
 
   if (isLoading) {
@@ -88,11 +88,13 @@ const SearchPage = () => {
                 onClick: (e) => handleSubmit(e)
               }}
               placeholder='Search'
+              disabled={isLoading}
             />
 
             <ExtendedSearch
               inputQuery={inputQuery}
               setInputQuery={setInputQuery}
+              handleSubmit={handleSubmit}
             />
           </Segment>
         </Rail>

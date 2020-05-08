@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Form,
   Divider,
@@ -7,25 +7,36 @@ import {
   FormField,
   Button
 } from 'semantic-ui-react';
+import uuid from 'react-uuid';
+import { ingredients } from './ingredients/InitialStateIngredients.js';
+import { converterUtils } from '../../utils/converterUtils';
 import DropDownSearch from './DropDownSearch.jsx';
 
-const ExtendedSearch = ({ inputQuery, setInputQuery }) => {
-  const ingredients = [
-    { key: 'bacon', value: 'bacon', text: 'Bacon' },
-    { key: 'onion', value: 'onion', text: 'Onion' },
-    { key: 'tomato', value: 'tomato', text: 'Tomato' }
-  ];
+const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
+  const [ingredientOptions, setIngredientOptions] = useState();
+  // const ingredients = [
+  //   { key: 'bacon', value: 'bacon', text: 'Bacon' },
+  //   { key: 'onion', value: 'onion', text: 'Onion' },
+  //   { key: 'tomato', value: 'tomato', text: 'Tomato' }
+  // ];
+
+  useEffect(() => {
+    setIngredientOptions(
+      ingredients.map((ingredient) => {
+        return {
+          key: uuid(),
+          value: ingredient.name,
+          text: converterUtils.toTitleCase(ingredient.name)
+        };
+      })
+    );
+  }, []);
 
   const cuisines = [
     { key: 'italian', value: 'italian', text: 'Italian', flag: 'it' },
     { key: 'danish', value: 'danish', text: 'Danish', flag: 'dk' },
     { key: 'french', value: 'french', text: 'French', flag: 'fr' }
   ];
-
-  const submitForm = (e) => {
-    e.preventDefault();
-    console.log(e);
-  };
 
   return (
     <Form>
@@ -39,7 +50,7 @@ const ExtendedSearch = ({ inputQuery, setInputQuery }) => {
       <Form.Field>
         <label>Ingredients</label>
         <DropDownSearch
-          initialOptions={[]}
+          initialOptions={ingredientOptions}
           placeholder='Include Ingredients'
           inputQuery={inputQuery}
           setInputQuery={setInputQuery}
@@ -51,7 +62,7 @@ const ExtendedSearch = ({ inputQuery, setInputQuery }) => {
       <Form.Field>
         <label>Excluded Ingredients</label>
         <DropDownSearch
-          initialOptions={ingredients}
+          initialOptions={ingredientOptions}
           placeholder='Exclude Ingredients'
           inputQuery={inputQuery}
           setInputQuery={setInputQuery}
@@ -90,7 +101,7 @@ const ExtendedSearch = ({ inputQuery, setInputQuery }) => {
         id={'submitFormBtn'}
         fluid
         onClick={(e) => {
-          submitForm(e);
+          handleSubmit(e);
         }}
       />
     </Form>
