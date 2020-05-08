@@ -5,17 +5,17 @@ import useFetch from '../../hooks/useFetch';
 
 const RandomRecipe = () => {
   const { response, error } = useFetch('/recipe/random/1');
-  let history = useHistory();
+  const history = useHistory();
   useEffect(() => {
     if (response !== null) {
       console.log(response);
-      let firstElement = response.results[0];
+      const firstElement = response.results[0];
       history.push(`/details/${firstElement.id}`);
     }
   }, [history, response]);
 
   if (error) {
-    alert(error);
+    return alert(error);
   } else {
     return (
       <Dimmer active inverted>

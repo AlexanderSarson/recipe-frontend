@@ -1,6 +1,6 @@
 import React from 'react';
 import { List, Header, Divider, Icon } from 'semantic-ui-react';
-import { v4 as uuid } from 'uuid';
+import uuid from 'react-uuid';
 
 const Instructions = ({ instructions }) => {
   const Item = List.Item;
