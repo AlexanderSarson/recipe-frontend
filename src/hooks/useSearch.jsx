@@ -13,8 +13,10 @@ const useProvideSearch = () => {
     number: 10,
     moveOffset: '',
     sessionId: '',
-    ingredients: [],
-    cuisines: []
+    includeIngredients: [],
+    includeCuisines: [],
+    excludeIngredients: [],
+    excludeCuisines: []
   };
   const [query, setQuery] = useState(emptyQuery);
   const [isLoading, setIsLoading] = useState(false);
