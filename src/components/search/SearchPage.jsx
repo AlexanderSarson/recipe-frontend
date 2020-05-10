@@ -37,12 +37,20 @@ const SearchPage = () => {
 
   const searchBackward = (e) => {
     e.preventDefault();
-    setQuery({ search: inputQuery.search, moveOffset: 'backward' });
+    setQuery({
+      ...inputQuery,
+      search: inputQuery.search,
+      moveOffset: 'backward'
+    });
   };
 
   const searchForward = (e) => {
     e.preventDefault();
-    setQuery({ search: inputQuery.search, moveOffset: 'forward' });
+    setQuery({
+      ...inputQuery,
+      search: inputQuery.search,
+      moveOffset: 'forward'
+    });
   };
 
   const handleSubmit = (e) => {

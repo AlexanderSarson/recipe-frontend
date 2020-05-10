@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Form,
-  Divider,
-  Header,
-  Icon,
-  FormField,
-  Button
-} from 'semantic-ui-react';
+import { Form, Divider, Header, Icon, Button } from 'semantic-ui-react';
 import uuid from 'react-uuid';
 import { ingredients } from './ingredients/InitialStateIngredients.js';
 import { converterUtils } from '../../utils/converterUtils';
@@ -32,11 +25,11 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
     );
   }, []);
 
-  const cuisines = [
-    { key: 'italian', value: 'italian', text: 'Italian', flag: 'it' },
-    { key: 'danish', value: 'danish', text: 'Danish', flag: 'dk' },
-    { key: 'french', value: 'french', text: 'French', flag: 'fr' }
-  ];
+  // const cuisines = [
+  //   { key: 'italian', value: 'italian', text: 'Italian', flag: 'it' },
+  //   { key: 'danish', value: 'danish', text: 'Danish', flag: 'dk' },
+  //   { key: 'french', value: 'french', text: 'French', flag: 'fr' }
+  // ];
 
   return (
     <Form>
@@ -50,6 +43,7 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
       <Form.Field>
         <label>Ingredients</label>
         <DropDownSearch
+          id='includeIngredientsDropdown'
           initialOptions={ingredientOptions}
           placeholder='Include Ingredients'
           inputQuery={inputQuery}
@@ -62,6 +56,7 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
       <Form.Field>
         <label>Excluded Ingredients</label>
         <DropDownSearch
+          id='excludeIngredientsDropdown'
           initialOptions={ingredientOptions}
           placeholder='Exclude Ingredients'
           inputQuery={inputQuery}
@@ -71,7 +66,7 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
         />
       </Form.Field>
 
-      <FormField>
+      {/* <FormField>
         <label>Cuisines</label>
         <DropDownSearch
           initialOptions={cuisines}
@@ -93,12 +88,12 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
           value={inputQuery.excludeCuisines}
           labelColor='red'
         />
-      </Form.Field>
+      </Form.Field> */}
 
       <Button
         content='Search'
         primary
-        id={'submitFormBtn'}
+        id='submitExtendedSearch'
         fluid
         onClick={(e) => {
           handleSubmit(e);

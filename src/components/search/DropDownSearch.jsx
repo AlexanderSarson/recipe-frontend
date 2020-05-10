@@ -3,6 +3,7 @@ import { Dropdown } from 'semantic-ui-react';
 import { converterUtils } from '../../utils/converterUtils';
 
 const DropDownSearch = ({
+  id,
   initialOptions,
   placeholder,
   inputQuery,
@@ -43,6 +44,7 @@ const DropDownSearch = ({
 
   return (
     <Dropdown
+      id={id}
       scrolling
       closeOnChange
       placeholder={placeholder}
