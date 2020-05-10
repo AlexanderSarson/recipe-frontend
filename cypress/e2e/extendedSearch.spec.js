@@ -20,4 +20,9 @@ describe('Using extended search', () => {
     cy.wait(1000);
     cy.get('.header').contains('15-minute Avocado Pasta');
   });
+  it('Recipe contains avocado, and not tomatoes', () => {
+    cy.get('.card').first().click();
+    cy.findByText('avocado').should('exist');
+    cy.findByText('Tomato').should('not.exist');
+  });
 });
