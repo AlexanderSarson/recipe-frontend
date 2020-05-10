@@ -3,6 +3,7 @@ import { RecipeCard } from '../search';
 import { Card, Segment, Rail, Input, Button, Label } from 'semantic-ui-react';
 import { useSearch } from '../../hooks/useSearch.jsx';
 import PlaceholderGrid from '../utils/placeholders/PlaceholderGrid.jsx';
+import ExtendedSearch from './ExtendedSearch.jsx';
 
 const SearchPage = () => {
   const {
@@ -36,17 +37,25 @@ const SearchPage = () => {
 
   const searchBackward = (e) => {
     e.preventDefault();
-    setQuery({ search: inputQuery.search, moveOffset: 'backward' });
+    setQuery({
+      ...inputQuery,
+      search: inputQuery.search,
+      moveOffset: 'backward'
+    });
   };
 
   const searchForward = (e) => {
     e.preventDefault();
-    setQuery({ search: inputQuery.search, moveOffset: 'forward' });
+    setQuery({
+      ...inputQuery,
+      search: inputQuery.search,
+      moveOffset: 'forward'
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setQuery({ search: inputQuery.search, moveOffset: '' });
+    setQuery(inputQuery);
   };
 
   if (isLoading) {
@@ -75,7 +84,11 @@ const SearchPage = () => {
               value={inputQuery.search}
               fluid
               onChange={(e) =>
-                setInputQuery({ search: e.target.value, moveOffset: '' })
+                setInputQuery({
+                  ...inputQuery,
+                  search: e.target.value,
+                  moveOffset: ''
+                })
               }
               action={{
                 id: 'searchBtn',
@@ -83,10 +96,18 @@ const SearchPage = () => {
                 onClick: (e) => handleSubmit(e)
               }}
               placeholder='Search'
+              disabled={isLoading}
+            />
+
+            <ExtendedSearch
+              inputQuery={inputQuery}
+              setInputQuery={setInputQuery}
+              handleSubmit={handleSubmit}
             />
           </Segment>
         </Rail>
       </Segment>
+
       <Segment>
         {generalResult && (
           <Button.Group>

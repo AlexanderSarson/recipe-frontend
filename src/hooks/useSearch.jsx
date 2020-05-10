@@ -12,7 +12,11 @@ const useProvideSearch = () => {
     search: '*',
     number: 10,
     moveOffset: '',
-    sessionId: ''
+    sessionId: '',
+    includeIngredients: [],
+    includeCuisines: [],
+    excludeIngredients: [],
+    excludeCuisines: []
   };
   const [query, setQuery] = useState(emptyQuery);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,9 +29,12 @@ const useProvideSearch = () => {
 
   const search = async (query) => {
     const options = apiUtils.makeOptions('POST', {
-      name: query.search,
-      number: 10,
-      moveOffset: query.moveOffset
+      ...query,
+      includeIngredients: query.includeIngredients.join(','),
+      excludeIngredients: query.excludeIngredients.join(','),
+      includeCuisines: query.includeCuisines.join(','),
+      excludeCuisines: query.excludeCuisines.join(','),
+      number: 10
     });
     try {
       setIsLoading(true);
