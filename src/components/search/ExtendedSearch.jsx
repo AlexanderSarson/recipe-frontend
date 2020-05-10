@@ -7,11 +7,6 @@ import DropDownSearch from './DropDownSearch.jsx';
 
 const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
   const [ingredientOptions, setIngredientOptions] = useState();
-  // const ingredients = [
-  //   { key: 'bacon', value: 'bacon', text: 'Bacon' },
-  //   { key: 'onion', value: 'onion', text: 'Onion' },
-  //   { key: 'tomato', value: 'tomato', text: 'Tomato' }
-  // ];
 
   useEffect(() => {
     setIngredientOptions(
