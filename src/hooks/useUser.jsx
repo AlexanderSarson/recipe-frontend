@@ -18,11 +18,14 @@ const useProvideUser = () => {
     }
   }, []);
 
-  const getFavourites = async (name) => {
+  const getFavourites = async () => {
     const opts = apiUtils.makeOptions('GET');
     try {
       setIsLoading(true);
-      const res = await apiUtils.fetchData(`/user/favourites/${name}`, opts);
+      const res = await apiUtils.fetchData(
+        `/user/favourites/${username}`,
+        opts
+      );
       setFavourites(res.favouriteRecipes);
       setIsLoading(false);
     } catch (error) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser.jsx';
 import RecipeCard from '../search/RecipeCard.jsx';
@@ -7,7 +7,11 @@ import PlaceholderGrid from '../utils/placeholders/PlaceholderGrid.jsx';
 
 const UserPage = () => {
   const { username } = useParams();
-  const { isLoading, favourites } = useUser();
+  const { isLoading, favourites, getFavourites } = useUser();
+
+  useEffect(() => {
+    getFavourites();
+  }, []);
 
   if (isLoading) {
     return (

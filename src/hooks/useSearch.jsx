@@ -10,7 +10,7 @@ export const useSearch = () => {
 const useProvideSearch = () => {
   const emptyQuery = {
     search: '*',
-    number: 10,
+    number: 12,
     moveOffset: '',
     sessionId: '',
     includeIngredients: [],
@@ -34,7 +34,7 @@ const useProvideSearch = () => {
       excludeIngredients: query.excludeIngredients.join(','),
       includeCuisines: query.includeCuisines.join(','),
       excludeCuisines: query.excludeCuisines.join(','),
-      number: 10
+      number: 12
     });
     try {
       setIsLoading(true);
