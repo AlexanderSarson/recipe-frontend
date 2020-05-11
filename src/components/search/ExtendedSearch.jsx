@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Divider, Header, Icon, Button } from 'semantic-ui-react';
 import uuid from 'react-uuid';
 import { ingredients } from './ingredients/InitialStateIngredients.js';
+import { cuisines } from './cuisines/InitialCuisines.js';
 import { converterUtils } from '../../utils/converterUtils';
 import DropDownSearch from './DropDownSearch.jsx';
 
@@ -61,7 +62,7 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
         />
       </Form.Field>
 
-      {/* <FormField>
+      <Form.Field>
         <label>Cuisines</label>
         <DropDownSearch
           initialOptions={cuisines}
@@ -71,7 +72,7 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
           value={inputQuery.includeCuisines}
           labelColor='blue'
         />
-      </FormField>
+      </Form.Field>
 
       <Form.Field>
         <label>Excluded Cuisines</label>
@@ -83,7 +84,7 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
           value={inputQuery.excludeCuisines}
           labelColor='red'
         />
-      </Form.Field> */}
+      </Form.Field>
 
       <Button
         content='Search'
