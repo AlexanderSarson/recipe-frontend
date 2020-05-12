@@ -9,7 +9,7 @@ import Logout from '../login/Logout.jsx';
 export default function Header() {
   const {
     // eslint-disable-next-line no-unused-vars
-    user: { isLoggedIn, name, authenticateRole }
+    user: { isLoggedIn, name }
   } = useAuth();
   const [openModal, setOpenModal] = useState(false);
 

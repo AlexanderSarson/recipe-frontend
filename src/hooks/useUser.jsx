@@ -14,7 +14,7 @@ const useProvideUser = () => {
     if (jwtToken) {
       const { username } = getUserAndRoles(jwtToken);
       setUsername(username);
-      getFavourites(username);
+      getFavourites();
     }
   }, []);
 
