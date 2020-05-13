@@ -29,8 +29,9 @@ const SearchPage = () => {
     const currentPageNumber = Math.floor(
       generalResult.offset / generalResult.number + 1
     );
-    const lastPageNumber =
-      Math.floor(generalResult.totalResults / generalResult.number) + 1;
+    const lastPageNumber = Math.ceil(
+      generalResult.totalResults / generalResult.number
+    );
     return `Page ${currentPageNumber} of ${lastPageNumber}`;
   };
 
