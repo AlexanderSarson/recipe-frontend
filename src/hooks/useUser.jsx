@@ -15,6 +15,7 @@ const useProvideUser = () => {
       const { username } = getUserAndRoles(jwtToken);
       setUsername(username);
     }
+
     const getFavourites = async () => {
       const opts = apiUtils.makeOptions('GET');
       try {

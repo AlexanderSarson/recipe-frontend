@@ -12,16 +12,16 @@ describe('Using Offset', () => {
     cy.get('#searchField').clear().type('falafel');
     cy.get('#searchBtn').click();
     cy.wait(1000);
-    cy.get('#pageLabel').contains('Page 1 of 20');
+    cy.get('#pageLabel').contains('Page 1 of 17');
   });
   it('Searches forward', () => {
     cy.get('#nextBtn').click();
     cy.wait(1000);
-    cy.get('#pageLabel').contains('Page 2 of 20');
+    cy.get('#pageLabel').contains('Page 2 of 17');
   });
   it('Searches backward', () => {
     cy.get('#previousBtn').click();
     cy.wait(1000);
-    cy.get('#pageLabel').contains('Page 1 of 20');
+    cy.get('#pageLabel').contains('Page 1 of 17');
   });
 });
