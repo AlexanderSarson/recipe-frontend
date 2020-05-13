@@ -14,30 +14,29 @@ const useProvideUser = () => {
     if (jwtToken) {
       const { username } = getUserAndRoles(jwtToken);
       setUsername(username);
-      getFavourites(username);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
-  const getFavourites = async () => {
-    const opts = apiUtils.makeOptions('GET');
-    try {
-      setIsLoading(true);
-      const res = await apiUtils.fetchData(
-        `/user/favourites/${username}`,
-        opts
-      );
-      setFavourites(res.favouriteRecipes);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      if (error.status) {
-        error.fullError.then((e) => alert(e.message));
-      } else {
-        console.log('Network error');
+    const getFavourites = async () => {
+      const opts = apiUtils.makeOptions('GET');
+      try {
+        setIsLoading(true);
+        const res = await apiUtils.fetchData(
+          `/user/favourites/${username}`,
+          opts
+        );
+        setFavourites(res.favouriteRecipes);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        if (error.status) {
+          error.fullError.then((e) => alert(e.message));
+        } else {
+          console.log('Network error');
+        }
       }
-    }
-  };
+    };
+    getFavourites();
+  }, [username]);
 
   const addRemoveFavourite = async (recipe, _action) => {
     const opts = apiUtils.makeOptions('POST', {
@@ -72,7 +71,6 @@ const useProvideUser = () => {
 
   return {
     isLoading,
-    getFavourites,
     addRemoveFavourite,
     isFavourite,
     favourites

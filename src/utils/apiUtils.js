@@ -18,7 +18,7 @@ const getSessionId = () => {
 };
 
 const makeOptions = (method, body = null, token = true) => {
-  let sessionId = getSessionId();
+  const sessionId = getSessionId();
   const opts = {
     method: method,
     headers: {
