@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './FeaturedRecipe.module.css';
 import Recipe from './Recipe/Recipe.jsx';
-import { Segment, Card, Divider, Grid } from 'semantic-ui-react';
+import { Segment, Divider, Grid } from 'semantic-ui-react';
 import FeaturedBanner from './FeaturedBanner/FeaturedBanner.jsx';
 
 let FeaturedRecipe = () => {

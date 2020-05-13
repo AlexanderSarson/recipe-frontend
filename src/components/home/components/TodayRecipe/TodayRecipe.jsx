@@ -19,7 +19,6 @@ const TodaysRecipe = () => {
       .get('https://sarson.codes/recipe-backend/api/recipe/random/1')
       .then((response) => {
         setRecipe(response.data.results[0]);
-        console.log(recipe);
         setImg(response.data.results[0].image);
         setTitle(response.data.results[0].title);
         setsummary(response.data.results[0].summary);

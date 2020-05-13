@@ -16,7 +16,7 @@ const useProvideSearch = () => {
     includeIngredients: [],
     includeCuisines: [],
     excludeIngredients: [],
-    excludeCuisines: []
+    excludeCuisine: []
   };
   const [query, setQuery] = useState(emptyQuery);
   const [isLoading, setIsLoading] = useState(false);
