@@ -16,6 +16,7 @@ const useProvideUser = () => {
       setUsername(username);
       getFavourites(username);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getFavourites = async () => {

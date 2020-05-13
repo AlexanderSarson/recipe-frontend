@@ -11,7 +11,7 @@ const UserPage = () => {
 
   useEffect(() => {
     getFavourites();
-  }, []);
+  }, [getFavourites]);
 
   if (isLoading) {
     return (
