@@ -11,7 +11,7 @@ describe('Login', () => {
     cy.get('#loginUsername').type(Cypress.env('TEST_USER'));
     cy.get('#loginPassword').type(Cypress.env('TEST_PASSWORD'));
     cy.get('#loginBtn').click();
-    cy.get('h1').contains('Home');
+    cy.findByText('Todays Recipe').should('exist');
   });
   it('Log out', () => {
     cy.findByText('Logout').click();

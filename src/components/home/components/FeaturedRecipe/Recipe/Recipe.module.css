@@ -1,0 +1,25 @@
+.card {
+    margin: 25px auto;
+}
+.cardDiv{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+.preloader{
+    display: flex;
+}
+
+@media (max-width: 1440px) {
+    .uiCard {
+        width: auto !important;
+        margin: auto 10% !important;
+    }
+}
+
+@media (max-width: 428px) {
+    .uiCard {
+        width: auto !important;
+        margin: auto 10% !important;
+    }
+}
