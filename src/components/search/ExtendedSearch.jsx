@@ -3,6 +3,7 @@ import { Form, Divider, Header, Icon, Button } from 'semantic-ui-react';
 import uuid from 'react-uuid';
 import { ingredients } from './ingredients/InitialStateIngredients.js';
 import { converterUtils } from '../../utils/converterUtils';
+import { cuisines } from './cuisines/InitialCuisines.js';
 import DropDownSearch from './DropDownSearch.jsx';
 
 const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
@@ -34,7 +35,6 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
           Extended Search
         </Header>
       </Divider>
-
       <Form.Field>
         <label>Ingredients</label>
         <DropDownSearch
@@ -47,7 +47,6 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
           labelColor='blue'
         />
       </Form.Field>
-
       <Form.Field>
         <label>Excluded Ingredients</label>
         <DropDownSearch
@@ -60,8 +59,7 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
           labelColor='red'
         />
       </Form.Field>
-
-      {/* <FormField>
+      <Form.Field>
         <label>Cuisines</label>
         <DropDownSearch
           initialOptions={cuisines}
@@ -71,8 +69,7 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
           value={inputQuery.includeCuisines}
           labelColor='blue'
         />
-      </FormField>
-
+      </Form.Field>
       <Form.Field>
         <label>Excluded Cuisines</label>
         <DropDownSearch
@@ -83,8 +80,7 @@ const ExtendedSearch = ({ inputQuery, setInputQuery, handleSubmit }) => {
           value={inputQuery.excludeCuisines}
           labelColor='red'
         />
-      </Form.Field> */}
-
+      </Form.Field>{' '}
       <Button
         content='Search'
         primary
